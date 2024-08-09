@@ -1,0 +1,175 @@
+# Coffe-Machine-project
+import Coffe_Machine_logo
+print(Coffe_Machine_logo.logo)
+import Coffe_Machine_resources
+
+money=0
+
+print(" Please select which coffe you want :\n Menu List :\n \n 1. Latte    100/- \n 2 . Expresso   125/-  \n3.Capauccino   150/-")
+def checker():
+    if order=='latte' :
+        if Coffe_Machine_resources.resources['milk']>Coffe_Machine_resources.latte['milk']:
+            if Coffe_Machine_resources.resources['water']>Coffe_Machine_resources.latte['water']:
+                if Coffe_Machine_resources.resources['coffe_powder']>Coffe_Machine_resources.latte['coffe_powder']:
+                    if Coffe_Machine_resources.resources['sugar']>Coffe_Machine_resources.latte['sugar']:
+                        return 'yes' 
+                    else:
+                        print("Sugar is not enough")
+                        return 'no'
+                else:
+                    print("Coffe_powder is not enough")
+                    return 'no '   
+            else:
+                print("Water is not enough") 
+                return 'no'    
+        else:
+            print("Milk is not enough") 
+            return 'no'  
+    elif order=='expresso':
+        if Coffe_Machine_resources.resources['milk']>Coffe_Machine_resources.expresso['milk']:
+            if Coffe_Machine_resources.resources['water']>Coffe_Machine_resources.expresso['water']:
+                if Coffe_Machine_resources.resources['coffe_powder']>Coffe_Machine_resources.expresso['coffe_powder']:
+                    if Coffe_Machine_resources.resources['sugar']>Coffe_Machine_resources.expresso['sugar']:
+                        return 'yes'
+                    else:
+                        print("Sugar is not enough")
+                        return 'no'
+                else:
+                    print("Coffe_powder is not enough") 
+                    return 'no'   
+            else:
+                print("Water is not enough") 
+                return 'no'    
+        else:
+            print("Milk is not enough")
+            return 'no '  
+    elif order=='capauccino':
+        if Coffe_Machine_resources.resources['milk']>Coffe_Machine_resources.capauccino['milk']:
+            if Coffe_Machine_resources.resources['water']>Coffe_Machine_resources.capauccino['water']:
+                if Coffe_Machine_resources.resources['coffe_powder']>Coffe_Machine_resources.capauccino['coffe_powder']:
+                    if Coffe_Machine_resources.resources['sugar']>Coffe_Machine_resources.capauccino['sugar']:
+                        return 'yes' 
+                    else:
+                        print("Sugar is not enough")
+                        return 'no'
+                else:
+                    print("Coffe_powder is not enough") 
+                    return 'no'   
+            else:
+                print("Water is not enough") 
+                return 'no '   
+        else:
+            print("Milk is not enough")   
+            return 'no'
+    elif order=='report'  :
+        print("Water : ",Coffe_Machine_resources.resources['water'],"ml")  
+        print("milk : ",Coffe_Machine_resources.resources['milk'],"ml")  
+        print("sugar : ",Coffe_Machine_resources.resources['sugar'],"gm")  
+        print("coffe_powder : ",Coffe_Machine_resources.resources['coffe_powder'],"gm")  
+        print("Money :",money , "Rs.")
+    elif order=='off'   :
+        exit()
+
+    else :
+        print("You have entered a wrong input :")    
+        exit()
+
+def given_money():
+    coins_5=int(input("how many 5rs . coins you insert :"))
+    coins_10=int(input("how many 10rs . coins you insert :"))
+    coins_20=int(input("how many 20rs . coins you insert :"))  
+    total_money_given=5*coins_5+10*coins_10+20*coins_20
+    return total_money_given
+def validation():
+    
+    money_given=given_money()
+    if order=='latte':
+        if money_given>=Coffe_Machine_resources.latte['price']:
+            refund=money_given-Coffe_Machine_resources.latte['price']
+            
+            if refund== 0:
+                pass    
+            else:
+                print("Here is your refund =", refund)
+            
+            return 'yes'
+        else:
+            print("You have not submit a proper amount for latte :") 
+            print("Here is your given money =", money_given)
+
+            return 'no'
+    elif order=='expresso':
+        if money_given>=Coffe_Machine_resources.expresso['price']:
+            refund=money_given-Coffe_Machine_resources.expresso['price']
+            
+            if refund== 0:
+                pass    
+            else:
+                print("Here is your refund =", refund)
+            
+            return 'yes'
+        else:
+            print("You have not submit a proper amount for expresso :")
+            print("Here is your given money =", money_given)
+            return 'no'            
+    else:
+        if money_given>=Coffe_Machine_resources.capauccino['price']:
+            refund=money_given-Coffe_Machine_resources.capauccino['price']
+            
+            if refund== 0:
+                pass    
+            else:
+                print("Here is your refund =", refund)
+            
+            return 'yes'
+        else:
+            print("You have not submit a proper amount for capauccino :")
+            print("Here is your given money =", money_given) 
+            return 'no'   
+
+                             
+                           
+end_of_loop=False 
+while not end_of_loop :
+    order=input("Enter what would you like to have(Latte/Expresso/Capauccino):").lower()
+    
+    if checker()=='yes':
+        print("Please insert coins (you can use only 5/10/20 rs.coins) :")
+        
+        validity=validation()
+        if validity =='yes':
+            if order=='latte':
+                print("Here is your Latte:")
+                Coffe_Machine_resources.resources['milk']-= Coffe_Machine_resources.latte['milk']
+                Coffe_Machine_resources.resources['water']-= Coffe_Machine_resources.latte['water']
+                Coffe_Machine_resources.resources['coffe_powder']-= Coffe_Machine_resources.latte['coffe_powder']
+                Coffe_Machine_resources.resources['sugar']-= Coffe_Machine_resources.latte['sugar']
+                money+=Coffe_Machine_resources.latte['price']
+            elif order=='capauccino':
+                print("Here is your Capauccino:")
+                Coffe_Machine_resources.resources['milk']-= Coffe_Machine_resources.capauccino['milk']
+                Coffe_Machine_resources.resources['water']-= Coffe_Machine_resources.capauccino['water']
+                Coffe_Machine_resources.resources['coffe_powder']-= Coffe_Machine_resources.capauccino['coffe_powder']
+                Coffe_Machine_resources.resources['sugar']-= Coffe_Machine_resources.capauccino['sugar'] 
+                money+=Coffe_Machine_resources.expresso['price']   
+            else:
+                print("Here is your Expresso:")
+                Coffe_Machine_resources.resources['milk']-= Coffe_Machine_resources.expresso['milk']
+                Coffe_Machine_resources.resources['water']-= Coffe_Machine_resources.expresso['water']
+                Coffe_Machine_resources.resources['coffe_powder']-= Coffe_Machine_resources.expresso['coffe_powder']
+                Coffe_Machine_resources.resources['sugar']-= Coffe_Machine_resources.expresso['sugar']  
+                money+=Coffe_Machine_resources.capauccino['price']   
+               
+            
+        else :
+            print("Please Submit a proper amount for your coffe :")
+
+    else : 
+        pass  
+
+
+        
+
+
+    
+
