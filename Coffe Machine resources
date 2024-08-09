@@ -1,0 +1,31 @@
+latte ={'price': 100 ,
+        'milk': 100,
+        'sugar':10 ,
+        'water':50 ,
+        'coffe_powder': 10 
+}
+
+capauccino={'price': 150 ,
+        'milk': 150,
+        'sugar':10 ,
+        'water':75 ,
+        'coffe_powder': 20
+}
+
+expresso ={'price': 125 ,
+        'milk': 200,
+        'sugar':10 ,
+        'water':50 ,
+        'coffe_powder': 15
+}
+
+milk=int(input("Enter the  milk amount (in ml) which you want to insert:"))
+sugar=int(input("Enter the  sugar amount (in gram) which you want to insert:"))
+water=int(input("Enter the  water amount ( in ml) which you want to insert:"))
+coffe_powder=int(input("Enter the  coffe powder amount (in gram) which you want to insert:"))
+
+resources={'milk': milk,
+        'sugar': sugar,
+        'water':water ,
+        'coffe_powder': coffe_powder
+}
